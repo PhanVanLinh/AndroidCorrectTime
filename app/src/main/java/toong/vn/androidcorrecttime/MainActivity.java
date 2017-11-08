@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Long deltaTime = mSharedPreferenceApi.get(SharedPreferenceApi.PREFS_DELTA_TIME, Long.class);
-        tvTime.setText(convertDate(System.currentTimeMillis() + (deltaTime == null ? 0 : deltaTime),
+        tvTime.setText(convertDate(System.currentTimeMillis() - (deltaTime == null ? 0 : deltaTime),
                 "dd/MM/yyyy hh:mm:ssz"));
     }
 
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
             long serverTime =
                     Long.parseLong(result.trim()) + (int) (7.5f * DateUtils.MINUTE_IN_MILLIS);
             Log.i(TAG, "server time " + serverTime);
-            long deltaTime = serverTime - System.currentTimeMillis();
+            long deltaTime = System.currentTimeMillis() - serverTime;
             long deltaTimeWithReboot = System.currentTimeMillis() - SystemClock.elapsedRealtime();
             mSharedPreferenceApi.put(SharedPreferenceApi.PREFS_DELTA_TIME, deltaTime);
             mSharedPreferenceApi.put(SharedPreferenceApi.PREFS_DELTA_TIME_FROM_REBOOT,

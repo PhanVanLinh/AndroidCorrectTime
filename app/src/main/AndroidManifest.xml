@@ -3,6 +3,7 @@
     package="toong.vn.androidcorrecttime">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
     <application
         android:allowBackup="true"
@@ -26,9 +27,16 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".MyRebootReceiver">
+        <receiver android:name=".MyRebootCompleteReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED">
+                </action>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".MyRebootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_SHUTDOWN">
                 </action>
             </intent-filter>
         </receiver>

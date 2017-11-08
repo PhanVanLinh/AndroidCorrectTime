@@ -39,11 +39,8 @@ public class MyService extends Service {
         }, intentFilter);
     }
 
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.i(TAG, "onStartCommand");
-        return START_STICKY;
-    }
+
+    
 
     @Override
     public void onTaskRemoved(Intent rootIntent) {
